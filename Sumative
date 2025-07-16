@@ -1,28 +1,26 @@
 import random
 
 def generate_question():
-    num_1 = random.randint (0, 50) # Generate a random interger between 0 and 50
-    num_2 = random.randint (0, 50) # Generate a random interger between 0 and 50
-    answer = num_1 + num_2
-    return num_1, num_2, answer
+    x = random.randint(0, 50)  # x is the unknown
+    num_2 = random.randint(0, 50)
+    answer = x + num_2
+    return x, num_2, answer
 
-#Main program with all the side effects kept in the main
+# Main program
 score = 0
 
-for _ in range (5):
-    num_1, num_2, answer = generate_question()
-    message = "what is " + str(num_1) + " + " + str(num_2) + "?"
+for _ in range(5):
+    x, num_2, answer = generate_question()
+    message = f"If x + {num_2} = {answer}, what is the value of x?"
     print(message)
-    user_answer = int(input("Your answer:"))
+    user_answer = int(input("Your answer: "))
 
-    if user_answer == answer:
-        print("Correct, Well Done!")
+    if user_answer == x:
+        print("Correct, well done!")
         score += 1
     else:
-        wrong_answer_message = "Wrong. The correct answer was: " + str(answer)
-        print(wrong_answer_message)
+        print(f"Wrong. The correct answer was: {x}")
 
-total_score = "You got: " + str(score) + " out of 5"
-print(total_score)
+print(f"You got: {score} out of 5")
  
 
